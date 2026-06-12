@@ -175,9 +175,9 @@ const getProjectLinks = (id: string) => {
 
 const ProjectCard = ({ project }: { project: typeof projects[0] }) => {
   return (
-    <MatrixCard className={`h-full flex flex-col group transition-all duration-500 hover:border-primary/50 ${project.featured ? 'lg:flex-row gap-8 min-h-[400px]' : ''}`}>
+    <MatrixCard className={`h-full flex flex-col group transition-all duration-500 hover:border-primary/50 ${project.featured ? 'lg:flex-row gap-8' : ''}`}>
       {/* Visual Side */}
-      <div className={`relative overflow-hidden rounded-lg bg-gradient-to-br ${project.color} ${project.featured ? 'lg:w-1/2 min-h-[250px]' : 'aspect-video mb-6'} flex items-center justify-center border ${project.borderColor}`}>
+      <div className={`relative overflow-hidden rounded-lg bg-gradient-to-br ${project.color} ${project.featured ? 'lg:w-1/2 min-h-[200px] sm:min-h-[250px] mb-6 lg:mb-0' : 'aspect-video mb-6'} flex items-center justify-center border ${project.borderColor}`}>
         <div className="absolute inset-0 opacity-20 bg-grid-pattern bg-[length:20px_20px]" />
         
         {/* Animated Visual Core */}

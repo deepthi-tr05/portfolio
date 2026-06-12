@@ -144,7 +144,7 @@ export const ChatAssistant = () => {
             transition={{ duration: 0.25, ease: 'easeOut' }}
             role="dialog"
             aria-label="NOVA AI assistant chat"
-            className="fixed z-[94] bottom-24 right-4 left-4 sm:left-auto sm:right-6 sm:w-[380px] max-h-[min(600px,calc(100dvh-130px))] flex flex-col rounded-2xl overflow-hidden border border-primary/25 bg-background/90 backdrop-blur-2xl shadow-[0_8px_60px_rgba(0,245,255,0.12)]"
+            className="fixed z-[94] bottom-24 right-4 left-4 sm:left-auto sm:right-6 sm:w-[380px] max-h-[65vh] sm:max-h-[min(600px,calc(100dvh-130px))] flex flex-col rounded-2xl overflow-hidden border border-primary/25 bg-background/90 backdrop-blur-2xl shadow-[0_8px_60px_rgba(0,245,255,0.12)]"
           >
             {/* Header */}
             <div className="px-4 py-3 border-b border-white/10 bg-foreground/40 flex items-center justify-between">

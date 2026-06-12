@@ -129,11 +129,13 @@ export const useVoice = ({ onTranscript }: UseVoiceOptions) => {
           releaseStream();
           setVoiceState('processing');
           const mimeType = recorder.mimeType || 'audio/webm';
-          const blob = new Blob(chunksRef.current, { type: mimeType });
+          // Sarvam rejects 'audio/webm;codecs=opus', so we strip everything after the semicolon
+          const cleanMimeType = mimeType.split(';')[0];
+          const blob = new Blob(chunksRef.current, { type: cleanMimeType });
           
           console.log('[Voice STT] Recording stopped');
           console.log(`[Voice STT] Blob size: ${blob.size} bytes`);
-          console.log(`[Voice STT] MIME type: ${mimeType}`);
+          console.log(`[Voice STT] MIME type: ${cleanMimeType} (original: ${mimeType})`);
 
           if (blob.size === 0) {
             console.error('[Voice STT] Error: Blob is empty');

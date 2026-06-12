@@ -6,7 +6,7 @@ import { links } from '../data/portfolio';
 
 export const Hero = () => {
   return (
-    <section className="min-h-[90vh] flex items-center relative overflow-hidden">
+    <section className="min-h-[100dvh] sm:min-h-[90vh] py-24 sm:py-0 flex items-center relative overflow-hidden">
       <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         {/* Left Content Area */}
@@ -24,7 +24,7 @@ export const Hero = () => {
             >
               System Online // Protocol 01
             </motion.span>
-            <h1 className="text-5xl md:text-7xl font-display font-extrabold tracking-tighter leading-none">
+            <h1 className="text-4xl md:text-7xl font-display font-extrabold tracking-tighter leading-none">
               DEEPTHI <span className="text-primary glow-text">T R</span>
             </h1>
             <div className="h-8 flex items-center">

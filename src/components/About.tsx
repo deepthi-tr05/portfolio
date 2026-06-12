@@ -132,7 +132,7 @@ export const About = () => {
           </div>
 
           {/* RIGHT SIDE: Identity Details */}
-          <div className="lg:col-span-7 min-h-[400px]">
+          <div className="lg:col-span-7">
             <AnimatePresence>
               {scanComplete && (
                 <motion.div
