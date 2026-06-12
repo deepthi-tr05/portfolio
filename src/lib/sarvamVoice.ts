@@ -22,22 +22,44 @@ export const hasSarvamKey = (): boolean => Boolean(SARVAM_KEY);
 
 /** Transcribe recorded audio via Sarvam STT. Returns transcript or null on failure. */
 export async function sarvamTranscribe(audio: Blob): Promise<string | null> {
-  if (!SARVAM_KEY) return null;
+  if (!SARVAM_KEY) {
+    console.error('[Sarvam STT] Error: Missing API Key');
+    return null;
+  }
   try {
+    console.log('[Sarvam STT] Preparing API request...');
     const form = new FormData();
-    form.append("file", audio, "speech.webm");
-    form.append("model", "saarika:v2.5");
+    
+    let ext = "webm";
+    if (audio.type.includes("mp4")) ext = "mp4";
+    else if (audio.type.includes("wav")) ext = "wav";
+    else if (audio.type.includes("ogg")) ext = "ogg";
+    else if (audio.type.includes("mpeg") || audio.type.includes("mp3")) ext = "mp3";
+    
+    form.append("file", audio, `speech.${ext}`);
+    form.append("model", "saarika:v1"); // using saarika:v1 as the standard model
     form.append("language_code", LANGUAGE);
+
+    console.log(`[Sarvam STT] File appended as speech.${ext}, sending request...`);
 
     const res = await fetch(`${SARVAM_BASE}/speech-to-text`, {
       method: "POST",
       headers: { "api-subscription-key": SARVAM_KEY },
       body: form,
     });
-    if (!res.ok) return null;
+    
+    console.log(`[Sarvam STT] API request sent. Status: ${res.status}`);
+    
+    if (!res.ok) {
+      const errText = await res.text();
+      console.error(`[Sarvam STT] API Error (${res.status}):`, errText);
+      return null;
+    }
     const data = await res.json();
+    console.log('[Sarvam STT] API Response:', data);
     return (data?.transcript as string)?.trim() || null;
-  } catch {
+  } catch (err) {
+    console.error('[Sarvam STT] Network or Parsing Error:', err);
     return null;
   }
 }

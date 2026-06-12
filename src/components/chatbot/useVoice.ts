@@ -128,17 +128,33 @@ export const useVoice = ({ onTranscript }: UseVoiceOptions) => {
         recorder.onstop = async () => {
           releaseStream();
           setVoiceState('processing');
-          const blob = new Blob(chunksRef.current, { type: recorder.mimeType || 'audio/webm' });
+          const mimeType = recorder.mimeType || 'audio/webm';
+          const blob = new Blob(chunksRef.current, { type: mimeType });
+          
+          console.log('[Voice STT] Recording stopped');
+          console.log(`[Voice STT] Blob size: ${blob.size} bytes`);
+          console.log(`[Voice STT] MIME type: ${mimeType}`);
+
+          if (blob.size === 0) {
+            console.error('[Voice STT] Error: Blob is empty');
+            setError('Transcription failed. Try again or type your query.');
+            setVoiceState('idle');
+            return;
+          }
+
           const transcript = await sarvamTranscribe(blob);
           setVoiceState('idle');
           if (transcript) {
+            console.log('[Voice STT] Transcription success:', transcript);
             onTranscript(transcript);
           } else {
+            console.error('[Voice STT] Transcription failed (null returned)');
             setError('Transcription failed. Try again or type your query.');
           }
         };
 
         recorder.start();
+        console.log('[Voice STT] Recording started');
         setVoiceState('listening');
 
         // Safety auto-stop at 15s
