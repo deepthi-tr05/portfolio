@@ -144,7 +144,7 @@ export const ChatAssistant = () => {
             transition={{ duration: 0.25, ease: 'easeOut' }}
             role="dialog"
             aria-label="NOVA AI assistant chat"
-            className="fixed z-[94] bottom-24 right-4 left-4 sm:left-auto sm:right-6 sm:w-[380px] max-h-[30vh] chat-assistant-mobile sm:max-h-[min(600px,calc(100dvh-130px))] flex flex-col rounded-2xl overflow-hidden border border-primary/25 bg-background/90 backdrop-blur-2xl shadow-[0_8px_60px_rgba(0,245,255,0.12)]"
+            className="fixed z-[94] bottom-20 right-2 left-2 sm:left-auto sm:right-6 sm:w-[380px] max-h-[70dvh] sm:max-h-[min(600px,calc(100dvh-130px))] flex flex-col rounded-2xl overflow-hidden border border-primary/25 bg-background/95 backdrop-blur-2xl shadow-[0_8px_60px_rgba(0,245,255,0.18)]"
           >
             {/* Header */}
             <div className="px-4 py-3 border-b border-white/10 bg-foreground/40 flex items-center justify-between">
@@ -223,7 +223,7 @@ export const ChatAssistant = () => {
             {/* Messages */}
             <div
               ref={scrollRef}
-              className="flex-1 overflow-y-auto px-4 py-4 space-y-4 min-h-[260px]"
+              className="flex-1 overflow-y-auto px-4 py-3 space-y-3"
             >
               {messages.map((msg, idx) => (
                 <div key={msg.id} className="space-y-3">

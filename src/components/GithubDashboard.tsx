@@ -170,10 +170,12 @@ export const GithubDashboard = () => {
             {/* Left: Global Stats */}
             <div className="lg:col-span-4 grid grid-cols-2 gap-4">
               {githubStats.map((stat, i) => (
-                <MatrixCard key={i} className="flex flex-col items-center justify-center p-6 text-center group hover:bg-primary/5">
-                  <stat.icon size={20} className="text-primary/60 mb-3 group-hover:text-primary transition-colors" />
-                  <span className="text-2xl font-display font-bold text-white mb-1 tracking-tighter">{stat.value}</span>
-                  <span className="text-[10px] font-mono text-muted uppercase tracking-widest">{stat.label}</span>
+                <MatrixCard key={i} className="flex flex-col items-center justify-center p-5 text-center group hover:bg-primary/5 gap-2">
+                  <stat.icon size={20} className="text-primary/60 group-hover:text-primary transition-colors shrink-0" />
+                  <div className="flex flex-col items-center gap-0.5 w-full">
+                    <span className="text-2xl font-display font-bold text-white tracking-tighter leading-none block w-full text-center">{stat.value}</span>
+                    <span className="text-[9px] font-mono text-muted uppercase tracking-widest block w-full text-center leading-snug">{stat.label}</span>
+                  </div>
                 </MatrixCard>
               ))}
               

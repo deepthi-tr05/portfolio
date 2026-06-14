@@ -6,7 +6,7 @@ import { links } from '../data/portfolio';
 
 export const Hero = () => {
   return (
-    <section className="min-h-[100dvh] sm:min-h-[90vh] py-24 sm:py-0 flex items-center relative overflow-hidden">
+    <section className="min-h-[100dvh] sm:min-h-[90vh] pt-20 pb-10 sm:pt-0 sm:pb-0 flex items-center relative overflow-hidden">
       <div className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         
         {/* Left Content Area */}
