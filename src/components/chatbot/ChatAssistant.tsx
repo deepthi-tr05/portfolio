@@ -111,7 +111,7 @@ export const ChatAssistant = () => {
         whileTap={{ scale: 0.92 }}
         onClick={() => setIsOpen((v) => !v)}
         aria-label={isOpen ? 'Close AI assistant' : 'Open AI assistant'}
-        className="fixed bottom-6 right-6 z-[95] w-14 h-14 rounded-2xl bg-foreground/90 backdrop-blur-xl border border-primary/40 shadow-[0_0_25px_rgba(0,245,255,0.25)] flex items-center justify-center text-primary hover:shadow-[0_0_35px_rgba(0,245,255,0.4)] transition-shadow"
+        className="fixed bottom-6 right-6 z-[95] w-12 h-12 rounded-2xl bg-foreground/90 backdrop-blur-xl border border-primary/40 shadow-[0_0_25px_rgba(0,245,255,0.25)] flex items-center justify-center text-primary hover:shadow-[0_0_35px_rgba(0,245,255,0.4)] transition-shadow"
       >
         <AnimatePresence mode="wait">
           {isOpen ? (
@@ -144,7 +144,7 @@ export const ChatAssistant = () => {
             transition={{ duration: 0.25, ease: 'easeOut' }}
             role="dialog"
             aria-label="NOVA AI assistant chat"
-            className="fixed z-[94] bottom-24 right-4 left-4 sm:left-auto sm:right-6 sm:w-[380px] max-h-[65vh] sm:max-h-[min(600px,calc(100dvh-130px))] flex flex-col rounded-2xl overflow-hidden border border-primary/25 bg-background/90 backdrop-blur-2xl shadow-[0_8px_60px_rgba(0,245,255,0.12)]"
+            className="fixed z-[94] bottom-24 right-4 left-4 sm:left-auto sm:right-6 sm:w-[380px] max-h-[30vh] chat-assistant-mobile sm:max-h-[min(600px,calc(100dvh-130px))] flex flex-col rounded-2xl overflow-hidden border border-primary/25 bg-background/90 backdrop-blur-2xl shadow-[0_8px_60px_rgba(0,245,255,0.12)]"
           >
             {/* Header */}
             <div className="px-4 py-3 border-b border-white/10 bg-foreground/40 flex items-center justify-between">

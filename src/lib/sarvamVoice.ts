@@ -16,7 +16,7 @@
 const SARVAM_KEY = import.meta.env.VITE_SARVAM_API_KEY as string | undefined;
 const SARVAM_BASE = "https://api.sarvam.ai";
 const LANGUAGE = (import.meta.env.VITE_SARVAM_LANGUAGE as string | undefined) ?? "en-IN";
-const TTS_SPEAKER = (import.meta.env.VITE_SARVAM_TTS_SPEAKER as string | undefined) ?? "anushka";
+const TTS_SPEAKER = (import.meta.env.VITE_SARVAM_TTS_SPEAKER as string | undefined) ?? "shreya";
 
 export const hasSarvamKey = (): boolean => Boolean(SARVAM_KEY);
 
@@ -37,8 +37,9 @@ export async function sarvamTranscribe(audio: Blob): Promise<string | null> {
     else if (audio.type.includes("mpeg") || audio.type.includes("mp3")) ext = "mp3";
     
     form.append("file", audio, `speech.${ext}`);
-    form.append("model", "saarika:v1"); // using saarika:v1 as the standard model
+    form.append("model", "saaras:v3");
     form.append("language_code", LANGUAGE);
+    form.append("mode", "transcribe");
 
     console.log(`[Sarvam STT] File appended as speech.${ext}, sending request...`);
 
@@ -75,14 +76,11 @@ export async function sarvamSpeak(text: string): Promise<string | null> {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        // Keep payload within API limits (500 chars per input)
-        inputs: [text.slice(0, 480)],
+        text: text.slice(0, 480),
         target_language_code: LANGUAGE,
         speaker: TTS_SPEAKER,
-        model: "bulbul:v2",
+        model: "bulbul:v3",
         pace: 1.0,
-        loudness: 1.0,
-        speech_sample_rate: 22050,
       }),
     });
     if (!res.ok) return null;

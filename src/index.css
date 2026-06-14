@@ -29,7 +29,7 @@
     background-color: var(--color-background);
     color: white;
     font-family: var(--font-sans);
-    overflow-x: hidden;
+    overflow: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -63,6 +63,29 @@
   .neon-border {
     border: 1px solid rgba(0, 245, 255, 0.5);
     box-shadow: 0 0 15px rgba(0, 245, 255, 0.2);
+  }
+
+  .chat-assistant-container {
+    height: calc(100vh - 2rem);
+    @media (min-width: 640px) {
+      height: calc(100vh - 4rem);
+    }
+  }
+
+  /* Mobile‑specific compact height for the chat window */
+  .chat-assistant-mobile {
+    @media (max-width: 639px) {
+      max-height: 25vh; /* Compact view */
+    }
+  }
+
+  .chat-assistant-btn {
+    width: 3rem;
+    height: 3rem;
+    @media (min-width: 640px) {
+      width: 3.5rem;
+      height: 3.5rem;
+    }
   }
 
   .nav-link {
